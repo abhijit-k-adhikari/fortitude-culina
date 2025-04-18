@@ -25,9 +25,8 @@ export default function InventoryView() {
           onClick={async () => {
             const serverResponse = await HelloWorldService.sayHello(name.value);
             Notification.show(serverResponse);
-          }}
-        >
-          Say hello
+          }}>
+          Say hello Inventory
         </Button>
       </section>
     </>

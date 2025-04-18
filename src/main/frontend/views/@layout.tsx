@@ -1,4 +1,5 @@
 import { createMenuItems, useViewConfig } from '@vaadin/hilla-file-router/runtime.js';
+import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
 import { effect, signal } from '@vaadin/hilla-react-signals';
 import {
   AppLayout,
@@ -21,6 +22,10 @@ effect(() => {
 
 // Publish for Vaadin to use
 (window as any).Vaadin.documentTitleSignal = documentTitleSignal;
+
+export const config: ViewConfig = {
+  loginRequired: true
+}
 
 export default function MainLayout() {
   const currentTitle = useViewConfig()?.title;
@@ -69,14 +74,14 @@ export default function MainLayout() {
                 root.setAttribute('theme', 'dark');
               }
             }}>
-            Toggle theme
+            <Icon icon="vaadin:retweet"></Icon>Toggle Theme
           </Button>
-              <Button
+              <Button theme="secondary error"
                 onClick={async () => {
                   await logout();
                   document.location.reload();
                 }}>
-                Sign out
+                <Icon icon="vaadin:sign-out"></Icon>Sign Out
               </Button>
             </>
           ) : (

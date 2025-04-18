@@ -6,6 +6,7 @@ import { useAuth } from 'Frontend/util/auth.js';
 export const config: ViewConfig = {
   menu: { exclude: true },
   flowLayout: false,
+  skipLayouts: true,
 };
 
 const loginI18n: LoginI18n = {
