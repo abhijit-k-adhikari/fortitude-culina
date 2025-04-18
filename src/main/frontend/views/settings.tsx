@@ -4,12 +4,12 @@ import { Button, Notification, TextField } from '@vaadin/react-components';
 import { HelloWorldService } from 'Frontend/generated/endpoints.js';
 
 export const config: ViewConfig = {
-  menu: { order: 8, icon: 'line-awesome/svg/file-contract-solid.svg' },
-  title: 'Report',
+  menu: { order: 9, icon: 'line-awesome/svg/cog-solid.svg' },
+  title: 'Settings',
   loginRequired: true,
 };
 
-export default function ReportView() {
+export default function SettingsView() {
   const name = useSignal('');
 
   return (

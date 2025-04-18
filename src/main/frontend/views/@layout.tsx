@@ -1,6 +1,15 @@
 import { createMenuItems, useViewConfig } from '@vaadin/hilla-file-router/runtime.js';
 import { effect, signal } from '@vaadin/hilla-react-signals';
-import { AppLayout, Avatar, Button, DrawerToggle, Icon, SideNav, SideNavItem } from '@vaadin/react-components';
+import {
+  AppLayout,
+  Avatar,
+  Button,
+  DrawerToggle,
+  HorizontalLayout,
+  Icon,
+  SideNav,
+  SideNavItem,
+} from '@vaadin/react-components';
 import { useAuth } from 'Frontend/util/auth.js';
 import { Suspense, useEffect } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router';
@@ -51,12 +60,22 @@ export default function MainLayout() {
                 <Avatar theme="xsmall" img={profilePictureUrl} name={state.user.name} />
                 {state.user.name}
               </div>
+          <Button
+            onClick={() => {
+              const root = document.documentElement;
+              if (root.getAttribute('theme') === 'dark') {
+                root.removeAttribute('theme');
+              } else {
+                root.setAttribute('theme', 'dark');
+              }
+            }}>
+            Toggle theme
+          </Button>
               <Button
                 onClick={async () => {
                   await logout();
                   document.location.reload();
-                }}
-              >
+                }}>
                 Sign out
               </Button>
             </>
