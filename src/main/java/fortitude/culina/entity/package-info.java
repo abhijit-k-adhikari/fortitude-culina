@@ -1,4 +1,4 @@
 @NonNullApi
-package fortitude.culina.data;
+package fortitude.culina.entity;
 
 import org.springframework.lang.NonNullApi;

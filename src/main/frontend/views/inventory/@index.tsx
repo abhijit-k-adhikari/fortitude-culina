@@ -1,7 +1,8 @@
 import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
+import { AutoGrid } from '@vaadin/hilla-react-crud';
 import { useSignal } from '@vaadin/hilla-react-signals';
-import { Button, Notification, TextField } from '@vaadin/react-components';
-import { HelloWorldService } from 'Frontend/generated/endpoints.js';
+import { InventoryService } from 'Frontend/generated/endpoints';
+import InventoryModel from 'Frontend/generated/fortitude/culina/entity/InventoryModel';
 
 export const config: ViewConfig = {
   menu: { order: 1, icon: 'line-awesome/svg/atom-solid.svg' },
@@ -14,21 +15,9 @@ export default function InventoryView() {
 
   return (
     <>
-      <section className="flex p-m gap-m items-end">
-        <TextField
-          label="Your name"
-          onValueChanged={(e) => {
-            name.value = e.detail.value;
-          }}
-        />
-        <Button
-          onClick={async () => {
-            const serverResponse = await HelloWorldService.sayHello(name.value);
-            Notification.show(serverResponse);
-          }}>
-          Say hello Inventory
-        </Button>
-      </section>
+      <div className="p-l">
+        <AutoGrid service={InventoryService} model={InventoryModel} />
+      </div>
     </>
   );
 }

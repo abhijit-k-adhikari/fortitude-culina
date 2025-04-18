@@ -1,12 +1,13 @@
 package fortitude.culina.services;
 
-import fortitude.culina.data.User;
-import fortitude.culina.data.UserRepository;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+
+import fortitude.culina.entity.User;
+import fortitude.culina.repository.UserRepository;
 
 @Service
 public class UserService {

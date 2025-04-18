@@ -1,8 +1,10 @@
 package fortitude.culina.security;
 
 import com.vaadin.flow.spring.security.AuthenticationContext;
-import fortitude.culina.data.User;
-import fortitude.culina.data.UserRepository;
+
+import fortitude.culina.entity.User;
+import fortitude.culina.repository.UserRepository;
+
 import java.util.Optional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;

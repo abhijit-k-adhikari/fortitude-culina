@@ -1,4 +1,4 @@
-package fortitude.culina.data;
+package fortitude.culina.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

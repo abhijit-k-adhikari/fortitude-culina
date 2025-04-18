@@ -1,6 +1,8 @@
-package fortitude.culina.data;
+package fortitude.culina.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import fortitude.culina.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;

@@ -1,7 +1,5 @@
 package fortitude.culina.security;
 
-import fortitude.culina.data.User;
-import fortitude.culina.data.UserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +9,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import fortitude.culina.entity.User;
+import fortitude.culina.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
