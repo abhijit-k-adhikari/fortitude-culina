@@ -1,7 +1,9 @@
 import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
 import { useSignal } from '@vaadin/hilla-react-signals';
-import { Button, Notification, TextField } from '@vaadin/react-components';
-import { HelloWorldService } from 'Frontend/generated/endpoints.js';
+import { AutoCrud } from '@vaadin/hilla-react-crud';
+import { UserCrudService } from 'Frontend/generated/endpoints';
+import UserModel from 'Frontend/generated/fortitude/culina/entity/UserModel';
+
 
 export const config: ViewConfig = {
   menu: { order: 6, icon: 'line-awesome/svg/user-solid.svg' },
@@ -14,22 +16,9 @@ export default function UserView() {
 
   return (
     <>
-      <section className="flex p-m gap-m items-end">
-        <TextField
-          label="Your name"
-          onValueChanged={(e) => {
-            name.value = e.detail.value;
-          }}
-        />
-        <Button
-          onClick={async () => {
-            const serverResponse = await HelloWorldService.sayHello(name.value);
-            Notification.show(serverResponse);
-          }}
-        >
-          Say hello
-        </Button>
-      </section>
+    <div className="p-l">
+        <AutoCrud style={{height: "600px"}} service={UserCrudService} model={UserModel} />
+      </div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
-import { AutoGrid } from '@vaadin/hilla-react-crud';
+import { AutoCrud } from '@vaadin/hilla-react-crud';
 import { useSignal } from '@vaadin/hilla-react-signals';
-import { InventoryService } from 'Frontend/generated/endpoints';
+import { InventoryCrudService } from 'Frontend/generated/endpoints';
 import InventoryModel from 'Frontend/generated/fortitude/culina/entity/InventoryModel';
 
 export const config: ViewConfig = {
@@ -16,7 +16,7 @@ export default function InventoryView() {
   return (
     <>
       <div className="p-l">
-        <AutoGrid service={InventoryService} model={InventoryModel} />
+        <AutoCrud style={{height: "600px"}} service={InventoryCrudService} model={InventoryModel} />
       </div>
     </>
   );
