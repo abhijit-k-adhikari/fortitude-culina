@@ -1,3 +1,5 @@
+// Contains code for List of Recipe information's
+
 import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
 import { useSignal } from '@vaadin/hilla-react-signals';
 import {
@@ -25,7 +27,7 @@ export const config: ViewConfig = {
   loginRequired: true,
 };
 
-export default function RecipeView() {
+export default function RecipeListView() {
   const name = useSignal('');
   const items = useSignal<Recipe[]>([]);
   const detailsOpenedItems = useSignal<Recipe[]>([]);

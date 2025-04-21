@@ -5,9 +5,9 @@ export const config: ViewConfig = {
   loginRequired: true
 }
 
-export default function InventoryLayout() {
+export default function RecipeLayout() {
   return (
-    <div>     
+    <div>    
       <main>
         <Outlet />
       </main>

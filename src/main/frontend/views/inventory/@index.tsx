@@ -1,3 +1,5 @@
+// Contains code for List of Inventory information's
+
 import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
 import { AutoCrud } from '@vaadin/hilla-react-crud';
 import { useSignal } from '@vaadin/hilla-react-signals';
@@ -10,7 +12,7 @@ export const config: ViewConfig = {
   loginRequired: true,
 };
 
-export default function InventoryView() {
+export default function InventoryListView() {
   const name = useSignal('');
 
   return (
