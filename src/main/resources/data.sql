@@ -55,13 +55,13 @@ INSERT INTO location (version, id, name) VALUES(1, '4', 'Jurang East')
 INSERT INTO location (version, id, name) VALUES(1, '5', 'Raffels Place')
 INSERT INTO location (version, id, name) VALUES(1, '6', 'Sarangoon')
 
-INSERT INTO recipe (version, id, recipe_name, ingredient_summary, preparation_method, date_added) VALUES(1, '1', 'GRILLED BASIL CHICKEN', '¾ cup balsamic vinegar
+INSERT INTO recipe (version, id, recipe_name, ingredient_summary, preparation_method, date_added) VALUES(1, '1', 'Grilled Basil Chicken', '¾ cup balsamic vinegar
 ¼ cup tightly packed fresh basil leaves, gently rub produce under cold running water.
 2 tbsp olive oil
 1 garlic clove, minced', 'Wash hands with soap and water.
 After washing basil and tomatoes, blot them dry with clean paper towel','2025-02-01')
 
-INSERT INTO recipe (version, id, recipe_name, ingredient_summary, preparation_method, date_added) VALUES(1, '2', 'MOROCCAN CHICKEN WITH EGGPLANT-ZUCCHINI', '¾ cup soda 
+INSERT INTO recipe (version, id, recipe_name, ingredient_summary, preparation_method, date_added) VALUES(1, '2', 'Moroccan Chicken With EggPlant - Zucchini', '¾ cup soda 
 ¼ cup tightly packed fresh basil leaves, gently rub produce under cold running water.
 2 tbsp olive oil
 1 garlic clove, minced', 'Wash hands with soap and water.
