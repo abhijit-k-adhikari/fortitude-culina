@@ -16,7 +16,7 @@ import _ from 'lodash';
 
 interface RecipeProps {
   dialogOpen: boolean;
-  onClick: (param: any) => void;
+  onClose: (param: any) => void;
 }
 
 export default function AddRecipe(props: RecipeProps) {
@@ -68,55 +68,45 @@ export default function AddRecipe(props: RecipeProps) {
     _.remove(ingredientItems, function (o: RecipeIngredientProps) {
       return o.uniqueId == uuId;
     });
+    
     setIngredientItems(ingredientItems);
     setIndividualIngredientProps({ items: ingredientItems, onDelete: (param: any) => {} });
   }
 
-  function addRecipe(): void {
+  function addRecipe(param: any): void {
+    console.log(param);
     // reset the panel for next time render
-    let items: RecipeIngredientProps[] = [
-      { uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' },
-    ];
-    setIngredientItems(items);
-    setIndividualIngredientProps({ items: items, onDelete: (param: any) => {} });
-
-    props.dialogOpen = false;
-    props.onClick('Add Clicked');
+    setIngredientItems([{ uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' }]);
+    props.onClose(param);
   }
 
-  function cancelRecipe(): void {
+  function cancelRecipe(param: any): void {
     // reset the panel for next time render
-    let items: RecipeIngredientProps[] = [
-      { uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' },
-    ];
-    setIngredientItems(items);
-    setIndividualIngredientProps({ items: items, onDelete: (param: any) => {} });
-
-    props.dialogOpen = false;
-    props.onClick('Cancel Clicked');
+    setIngredientItems([{ uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' }]);
+    props.onClose(param);
   }
 
   return (
     <Dialog
-      width="1100px"
+      width="1200px"
       height="700px"
       headerTitle="Add Recipe"
       opened={props.dialogOpen}
       footer={
         <>
           <HorizontalLayout theme="spacing" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-            <Button theme="secondary error" onClick={cancelRecipe}>
+            <Button theme="secondary error" onClick={() => cancelRecipe('Cancel Clicked')}>
               Cancel
             </Button>
-            <Button theme="primary" onClick={addRecipe}>
+            <Button theme="primary" onClick={() => addRecipe('Add Clicked')}>
               Add Recipe
             </Button>
           </HorizontalLayout>
         </>
       }>
       <VerticalLayout theme="spacing" style={{ alignItems: 'stretch' }}>
-        <FormLayout responsiveSteps={[{ columns: 3 }]}>
-          <TextField label="Recipe Name" data-colspan="2" required errorMessage="Recipe name is mandatory" />
+        <FormLayout responsiveSteps={[{ columns: 4 }]}>
+          <TextField label="Recipe Name" data-colspan="3" required errorMessage="Recipe name is mandatory" />
           <ComboBox
             label="Number of Pax"
             data-colspan="1"
@@ -125,7 +115,7 @@ export default function AddRecipe(props: RecipeProps) {
             itemValuePath="value"
             items={pax}
             errorMessage="Field is required"></ComboBox>
-          <div data-colspan="2">
+          <div data-colspan="3">
             <AddIngredient items={ingredientItemProps.items} onDelete={deleteIngredients}></AddIngredient>
             <HorizontalLayout theme="spacing" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>
               <Button theme="secondary" onClick={addIngredients}>
@@ -137,7 +127,7 @@ export default function AddRecipe(props: RecipeProps) {
               label="Ingredients"
               value="4444"
               style={{
-                width: '63%',
+                width: '72%',
                 minHeight: '100px',
                 maxHeight: '150px',
                 position: 'absolute',
@@ -152,7 +142,7 @@ export default function AddRecipe(props: RecipeProps) {
             allowedCharPattern="[A-Za-z0-9,.\-\s]"
             label="Preparation Method"
             helperText="Must be between 0 and 1000 characters long. Allowed special char are comma & dot"
-            style={{ width: '100%', height: '370px' }}
+            style={{ width: '100%', height: '370px', marginBottom: 'auto'}}
             errorMessage={errorMessage}
             onValidated={(event) => {
               const field = event.target as TextAreaElement;

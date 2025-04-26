@@ -22,7 +22,6 @@ export const config: ViewConfig = {
 };
 
 export default function InventoryListView() {
-  const name = useSignal('');
   const categories = useSignal<any>([]);
   const units = useSignal<any>([]);
   const locations = useSignal<any>([]);

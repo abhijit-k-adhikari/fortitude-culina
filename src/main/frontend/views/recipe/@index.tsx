@@ -16,13 +16,13 @@ export const config: ViewConfig = {
 
 export default function RecipeListView() {
   const name = useSignal('');
-  
+
   //Recipe Master-Child Grid
   const items = useSignal<Recipe[]>([]);
   const detailsOpenedItems = useSignal<Recipe[]>([]);
 
   // Recipe Add Dialog Popup
-  const [addDialogOpen, setAddDialogOpen] = useState<boolean>(false);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
 
   useEffect(() => {
     RecipeService.getAllRecipe().then((recipe: any) => {
@@ -73,9 +73,8 @@ export default function RecipeListView() {
     </Button>
   );
 
-  const closeDialogWindow = (param: any) => {
-    console.log(param);
-    setAddDialogOpen(false);
+  const onCloseDialog = (param: any) => {
+    setOpenDialog(false);
   };
 
   return (
@@ -86,7 +85,7 @@ export default function RecipeListView() {
             theme="primary success"
             style={{ display: 'inline-block', marginRight: '20px' }}
             onClick={() => {
-              setAddDialogOpen(true);
+              setOpenDialog(true);
             }}>
             Add Recipe <Icon icon="vaadin:cross-cutlery" slot={'prefix'} />
           </Button>
@@ -102,7 +101,7 @@ export default function RecipeListView() {
           <GridColumn frozenToEnd autoWidth flexGrow={0} renderer={editRenderer} />
           <GridColumn frozenToEnd autoWidth flexGrow={0} renderer={deleteRenderer} />
         </Grid>
-        <AddRecipe dialogOpen={addDialogOpen} onClick={closeDialogWindow}></AddRecipe>
+        <AddRecipe dialogOpen={openDialog} onClose={onCloseDialog}></AddRecipe>
       </div>
     </>
   );
