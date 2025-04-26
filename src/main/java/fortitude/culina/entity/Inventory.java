@@ -1,15 +1,33 @@
 package fortitude.culina.entity;
 
-import java.time.LocalDate;
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Inventory extends AbstractEntity {
 
+    @NotNull
+    @NotBlank
     private String name;
+
+    @NotNull
+    @NotBlank
     private String category;
-    private double price;
-    private LocalDate dateAdded;
+
+    @NotNull
+    private Integer quantity;
+
+    @NotNull
+    @NotBlank
+    private String unit;
+
+    @NotNull
+    private Integer minQuantity;
+
+    @NotNull
+    @NotBlank
+    private String location;
 
     public String getName() {
         return name;
@@ -27,20 +45,35 @@ public class Inventory extends AbstractEntity {
         this.category = category;
     }
 
-    public double getPrice() {
-        return price;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public LocalDate getDateAdded() {
-        return dateAdded;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setDateAdded(LocalDate dateAdded) {
-        this.dateAdded = dateAdded;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
+    public Integer getMinQuantity() {
+        return minQuantity;
+    }
+
+    public void setMinQuantity(Integer minQuantity) {
+        this.minQuantity = minQuantity;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }
