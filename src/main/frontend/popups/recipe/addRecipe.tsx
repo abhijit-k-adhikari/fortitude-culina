@@ -4,16 +4,15 @@ import {
   Dialog,
   FormLayout,
   HorizontalLayout,
-  Icon,
   TextArea,
   TextAreaElement,
   TextField,
-  Tooltip,
   VerticalLayout,
 } from '@vaadin/react-components';
-import { useEffect, useState } from 'react';
-import { RecipeIngredientListProps, RecipeIngredientProps } from 'Frontend/views/interfaces/sharedInterfaces';
-import AddIndividualIngredient from './addIndividualIngredient';
+import { useState } from 'react';
+import { RecipeIngredientListProps, RecipeIngredientProps } from 'Frontend/interfaces/sharedInterfaces';
+import AddIngredient from './addIngredient';
+import _ from 'lodash';
 
 interface RecipeProps {
   dialogOpen: boolean;
@@ -47,37 +46,69 @@ export default function AddRecipe(props: RecipeProps) {
   ]);
 
   const [ingredientItems, setIngredientItems] = useState<RecipeIngredientProps[]>([
-    { ingredientName: '', quantity: '0', unit: '', note: '' },
-    { ingredientName: 'tomato', quantity: '10', unit: 'pc', note: 'notes' },
+    { uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' },
   ]);
 
   const [ingredientItemProps, setIndividualIngredientProps] = useState<RecipeIngredientListProps>({
     items: ingredientItems,
+    onDelete: (param: any) => {},
   });
+
+  function addIngredients(): void {
+    let items: RecipeIngredientProps[] = ingredientItems;
+    let uuid = _.uniqueId();
+    console.log('addIngredients: ' + uuid);
+    items.push({ uniqueId: uuid, ingredientName: '', quantity: '0', unit: '', note: '' });
+
+    setIngredientItems(items);
+    setIndividualIngredientProps({ items: items, onDelete: (param: any) => {} });
+  }
+
+  function deleteIngredients(uuId: any): void {
+    _.remove(ingredientItems, function (o: RecipeIngredientProps) {
+      return o.uniqueId == uuId;
+    });
+    setIngredientItems(ingredientItems);
+    setIndividualIngredientProps({ items: ingredientItems, onDelete: (param: any) => {} });
+  }
+
+  function addRecipe(): void {
+    // reset the panel for next time render
+    let items: RecipeIngredientProps[] = [
+      { uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' },
+    ];
+    setIngredientItems(items);
+    setIndividualIngredientProps({ items: items, onDelete: (param: any) => {} });
+
+    props.dialogOpen = false;
+    props.onClick('Add Clicked');
+  }
+
+  function cancelRecipe(): void {
+    // reset the panel for next time render
+    let items: RecipeIngredientProps[] = [
+      { uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' },
+    ];
+    setIngredientItems(items);
+    setIndividualIngredientProps({ items: items, onDelete: (param: any) => {} });
+
+    props.dialogOpen = false;
+    props.onClick('Cancel Clicked');
+  }
 
   return (
     <Dialog
-      width="1000px"
-      height="620px"
+      width="1100px"
+      height="700px"
       headerTitle="Add Recipe"
       opened={props.dialogOpen}
       footer={
         <>
           <HorizontalLayout theme="spacing" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-            <Button
-              theme="secondary error"
-              onClick={() => {
-                props.dialogOpen = false;
-                props.onClick('Cancel/Close');
-              }}>
+            <Button theme="secondary error" onClick={cancelRecipe}>
               Cancel
             </Button>
-            <Button
-              theme="primary"
-              onClick={() => {
-                props.dialogOpen = false;
-                props.onClick('Add Clicked');
-              }}>
+            <Button theme="primary" onClick={addRecipe}>
               Add Recipe
             </Button>
           </HorizontalLayout>
@@ -95,9 +126,11 @@ export default function AddRecipe(props: RecipeProps) {
             items={pax}
             errorMessage="Field is required"></ComboBox>
           <div data-colspan="2">
-            <AddIndividualIngredient items={ingredientItemProps.items}></AddIndividualIngredient>
+            <AddIngredient items={ingredientItemProps.items} onDelete={deleteIngredients}></AddIngredient>
             <HorizontalLayout theme="spacing" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-              <Button theme="secondary">Add Ingredients</Button>
+              <Button theme="secondary" onClick={addIngredients}>
+                Add Ingredients
+              </Button>
             </HorizontalLayout>
             <TextArea
               disabled

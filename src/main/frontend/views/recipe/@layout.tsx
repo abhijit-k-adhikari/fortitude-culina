@@ -7,7 +7,7 @@ export const config: ViewConfig = {
 
 export default function RecipeLayout() {
   return (
-    <div>    
+    <div>     
       <main>
         <Outlet />
       </main>

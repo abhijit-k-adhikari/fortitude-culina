@@ -6,7 +6,7 @@ import { Button, FormLayout, Grid, GridColumn, Icon, TextField } from '@vaadin/r
 import { useCallback, useEffect, useState } from 'react';
 import { RecipeService } from 'Frontend/generated/endpoints';
 import Recipe from 'Frontend/generated/fortitude/culina/entity/recipe/Recipe';
-import AddRecipe from './dialog/addRecipe';
+import AddRecipe from '../../popups/recipe/addRecipe';
 
 export const config: ViewConfig = {
   menu: { order: 2, icon: 'line-awesome/svg/cocktail-solid.svg' },
