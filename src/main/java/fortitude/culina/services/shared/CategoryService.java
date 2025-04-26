@@ -1,10 +1,10 @@
-package fortitude.culina.services;
+package fortitude.culina.services.shared;
 
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.hilla.BrowserCallable;
 
+import fortitude.culina.entity.shared.Category;
 import fortitude.culina.repository.CategoryRepository;
-import fortitude.culina.entity.Category;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CategoryService {
 
     @Autowired
-    private CategoryRepository CategoryRepository;
+    private CategoryRepository categoryRepository;
 
     public List<Category> getAllCategories() {
-        return CategoryRepository.findAll();
+        return categoryRepository.findAll();
     }
 }

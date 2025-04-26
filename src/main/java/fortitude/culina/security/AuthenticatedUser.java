@@ -2,7 +2,7 @@ package fortitude.culina.security;
 
 import com.vaadin.flow.spring.security.AuthenticationContext;
 
-import fortitude.culina.entity.User;
+import fortitude.culina.entity.users.User;
 import fortitude.culina.repository.UserRepository;
 
 import java.util.Optional;

@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fortitude.culina.entity.User;
+import fortitude.culina.entity.users.User;
 import fortitude.culina.repository.UserRepository;
 
 @Service

@@ -5,7 +5,7 @@ insert into user_roles (user_id, roles) values ('2', 'USER')
 insert into user_roles (user_id, roles) values ('2', 'ADMIN')
 
 INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity, location) VALUES(1, '1', 'Apple', 'Fruit', 199, 'pc', 10, 'Central Kichen')
-INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity, location) VALUES(1, '2', 'Sugar', 'Raw Material', 20, 'Kg',10, 'Central Kichen')
+INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity, location) VALUES(1, '2', 'Sugar', 'Raw Material', 20, 'grams',10, 'Central Kichen')
 INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity, location) VALUES(1, '3', 'Carrot', 'Vegetable',  399,'Kg', 10, 'Central Kichen')
 INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity, location) VALUES(1, '4', 'Eggplant', 'Vegetable', 599, 'Kg',10, 'Central Kichen')
 INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity, location) VALUES(1, '5', 'Orange', 'Fruit', 249, 'pc',10, 'Central Kichen')
@@ -36,8 +36,24 @@ INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity
 INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity, location) VALUES(1, '30', 'Blackberry', 'Fruit',   449,'pc', 10, 'Central Kichen')
 INSERT INTO inventory (version, id, name, category, quantity, unit, min_Quantity, location) VALUES(1, '31', 'Sweet Potato', 'Vegetable', 199,'Kg', 10, 'Central Kichen')
 
-INSERT INTO Category (version, id, name) VALUES(1, '1', 'Fruit')
-INSERT INTO Category (version, id, name) VALUES(1, '2', 'Vegetable')
+INSERT INTO category (version, id, name) VALUES(1, '1', 'Fruit')
+INSERT INTO category (version, id, name) VALUES(1, '2', 'Vegetable')
+INSERT INTO category (version, id, name) VALUES(1, '3', 'Raw Material')
+
+INSERT INTO unit (version, id, name) VALUES(1, '1', 'pc')
+INSERT INTO unit (version, id, name) VALUES(1, '2', 'liters')
+INSERT INTO unit (version, id, name) VALUES(1, '3', 'grams')
+INSERT INTO unit (version, id, name) VALUES(1, '4', 'Kg')
+INSERT INTO unit (version, id, name) VALUES(1, '5', 'cartons')
+INSERT INTO unit (version, id, name) VALUES(1, '6', 'pounds')
+INSERT INTO unit (version, id, name) VALUES(1, '7', 'gallons')
+
+INSERT INTO location (version, id, name) VALUES(1, '1', 'Central Kichen')
+INSERT INTO location (version, id, name) VALUES(1, '2', 'Upper Changi North')
+INSERT INTO location (version, id, name) VALUES(1, '3', 'Bedok Resorvior')
+INSERT INTO location (version, id, name) VALUES(1, '4', 'Jurang East')
+INSERT INTO location (version, id, name) VALUES(1, '5', 'Raffels Place')
+INSERT INTO location (version, id, name) VALUES(1, '6', 'Sarangoon')
 
 INSERT INTO recipe (version, id, recipe_name, ingredient_summary, preparation_method, date_added) VALUES(1, '1', 'GRILLED BASIL CHICKEN', '¾ cup balsamic vinegar
 ¼ cup tightly packed fresh basil leaves, gently rub produce under cold running water.

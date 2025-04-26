@@ -1,5 +1,6 @@
-package fortitude.culina.entity;
+package fortitude.culina.entity.inventory;
 
+import fortitude.culina.entity.AbstractEntity;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

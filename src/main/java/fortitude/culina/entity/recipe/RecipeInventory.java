@@ -1,7 +1,8 @@
-package fortitude.culina.entity;
+package fortitude.culina.entity.recipe;
 
 import java.time.LocalDate;
 
+import fortitude.culina.entity.AbstractEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 

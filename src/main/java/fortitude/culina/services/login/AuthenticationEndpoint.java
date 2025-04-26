@@ -1,9 +1,9 @@
-package fortitude.culina.services;
+package fortitude.culina.services.login;
 
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.hilla.BrowserCallable;
 
-import fortitude.culina.entity.User;
+import fortitude.culina.entity.users.User;
 import fortitude.culina.security.AuthenticatedUser;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

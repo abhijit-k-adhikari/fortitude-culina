@@ -1,10 +1,10 @@
-package fortitude.culina.services;
+package fortitude.culina.services.recipe;
 
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.hilla.BrowserCallable;
 
+import fortitude.culina.entity.recipe.Recipe;
 import fortitude.culina.repository.RecipeRepository;
-import fortitude.culina.entity.Recipe; 
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

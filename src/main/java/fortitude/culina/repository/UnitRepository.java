@@ -3,8 +3,8 @@ package fortitude.culina.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import fortitude.culina.entity.recipe.Recipe;
+import fortitude.culina.entity.shared.Unit;
 
-public interface RecipeRepository extends JpaRepository<Recipe, Long>, JpaSpecificationExecutor<Recipe> {
+public interface UnitRepository extends JpaRepository<Unit, Long>, JpaSpecificationExecutor<Unit> {
 
 }

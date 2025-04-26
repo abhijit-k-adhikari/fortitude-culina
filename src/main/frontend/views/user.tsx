@@ -2,7 +2,7 @@ import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
 import { useSignal } from '@vaadin/hilla-react-signals';
 import { AutoCrud } from '@vaadin/hilla-react-crud';
 import { UserCrudService } from 'Frontend/generated/endpoints';
-import UserModel from 'Frontend/generated/fortitude/culina/entity/UserModel';
+import UserModel from 'Frontend/generated/fortitude/culina/entity/users/UserModel';
 
 
 export const config: ViewConfig = {

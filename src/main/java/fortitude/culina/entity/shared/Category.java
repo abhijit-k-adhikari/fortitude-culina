@@ -1,5 +1,6 @@
-package fortitude.culina.entity;
+package fortitude.culina.entity.shared;
 
+import fortitude.culina.entity.AbstractEntity;
 import jakarta.persistence.Entity;
 
 @Entity

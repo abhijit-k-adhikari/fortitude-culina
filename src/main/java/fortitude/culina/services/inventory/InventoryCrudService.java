@@ -1,9 +1,10 @@
-package fortitude.culina.services;
+package fortitude.culina.services.inventory;
 
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.hilla.BrowserCallable;
 import com.vaadin.hilla.crud.CrudRepositoryService;
-import fortitude.culina.entity.Inventory;
+
+import fortitude.culina.entity.inventory.Inventory;
 import fortitude.culina.repository.InventoryRepository;
 
 @BrowserCallable

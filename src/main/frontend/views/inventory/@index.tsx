@@ -6,9 +6,13 @@ import { useEffect } from 'react';
 import { useSignal } from '@vaadin/hilla-react-signals';
 import { ComboBox, TextArea } from '@vaadin/react-components';
 import { InventoryCrudService } from 'Frontend/generated/endpoints';
-import InventoryModel from 'Frontend/generated/fortitude/culina/entity/InventoryModel';
+import InventoryModel from 'Frontend/generated/fortitude/culina/entity/inventory/InventoryModel';
 import { CategoryService } from 'Frontend/generated/endpoints';
-import Category from 'Frontend/generated/fortitude/culina/entity/Category';
+import Category from 'Frontend/generated/fortitude/culina/entity/shared/Category';
+import { UnitService } from 'Frontend/generated/endpoints';
+import Unit from 'Frontend/generated/fortitude/culina/entity/shared/Unit';
+import { LocationService } from 'Frontend/generated/endpoints';
+import Location from 'Frontend/generated/fortitude/culina/entity/shared/Location';
 import { field } from '@vaadin/hilla-lit-form';
 
 export const config: ViewConfig = {
@@ -19,10 +23,14 @@ export const config: ViewConfig = {
 
 export default function InventoryListView() {
   const name = useSignal('');
-  const categories = useSignal<Category[]>([]);
+  const categories = useSignal<any>([]);
+  const units = useSignal<any>([]);
+  const locations = useSignal<any>([]);
 
   useEffect(() => {
     CategoryService.getAllCategories().then((data) => (categories.value = data));
+    UnitService.getAllUnits().then((data) => (units.value = data));
+    LocationService.getAllLocations().then((data) => (locations.value = data));
   });
 
   return (
@@ -46,6 +54,30 @@ export default function InventoryListView() {
                     itemLabelPath="name"
                     itemValuePath="name"
                     items={categories.value}
+                    errorMessage="Field is required"></ComboBox>
+                ),
+              },
+              unit: {
+                renderer: ({ field }) => (
+                  <ComboBox
+                    {...field}
+                    required
+                    label="Unit"
+                    itemLabelPath="name"
+                    itemValuePath="name"
+                    items={units.value}
+                    errorMessage="Field is required"></ComboBox>
+                ),
+              },
+              location: {
+                renderer: ({ field }) => (
+                  <ComboBox
+                    {...field}
+                    required
+                    label="Unit"
+                    itemLabelPath="name"
+                    itemValuePath="name"
+                    items={locations.value}
                     errorMessage="Field is required"></ComboBox>
                 ),
               },
