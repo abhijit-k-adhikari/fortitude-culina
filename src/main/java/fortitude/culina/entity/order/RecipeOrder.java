@@ -14,11 +14,34 @@ public class RecipeOrder extends AbstractEntity {
 
     @NotNull
     @NotBlank
+    private String recipe;
+
+    @NotNull
+    @NotBlank
     private String locationId;
 
     @NotNull
     @NotBlank
+    private String location;
+
+    @NotNull
+    @NotBlank
     private String staffId;
+
+    @NotNull
+    @NotBlank
+    private String staff;
+    
+    @NotNull
+    @NotBlank
+    private String orderStageId;
+
+    @NotNull
+    @NotBlank
+    private String orderStage;
+ 
+    @NotNull
+    private Integer numberOfOrderPlaced;
 
     private String customerName;
 
@@ -28,19 +51,20 @@ public class RecipeOrder extends AbstractEntity {
 
     private String customerAddress;
 
-    @NotNull
-    private Integer numberOfOrderPlaced;
-
-    @NotNull
-    @NotBlank
-    private String orderStageId;
-
     public String getRecipeId() {
         return recipeId;
     }
 
     public void setRecipeId(String recipeId) {
         this.recipeId = recipeId;
+    }
+
+    public String getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
     }
 
     public String getLocationId() {
@@ -51,12 +75,52 @@ public class RecipeOrder extends AbstractEntity {
         this.locationId = locationId;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getStaffId() {
         return staffId;
     }
 
     public void setStaffId(String staffId) {
         this.staffId = staffId;
+    }
+
+    public String getStaff() {
+        return staff;
+    }
+
+    public void setStaff(String staff) {
+        this.staff = staff;
+    }
+
+    public String getOrderStageId() {
+        return orderStageId;
+    }
+
+    public void setOrderStageId(String orderStageId) {
+        this.orderStageId = orderStageId;
+    }
+
+    public String getOrderStage() {
+        return orderStage;
+    }
+
+    public void setOrderStage(String orderStage) {
+        this.orderStage = orderStage;
+    }
+
+    public Integer getNumberOfOrderPlaced() {
+        return numberOfOrderPlaced;
+    }
+
+    public void setNumberOfOrderPlaced(Integer numberOfOrderPlaced) {
+        this.numberOfOrderPlaced = numberOfOrderPlaced;
     }
 
     public String getCustomerName() {
@@ -91,20 +155,6 @@ public class RecipeOrder extends AbstractEntity {
         this.customerAddress = customerAddress;
     }
 
-    public Integer getNumberOfOrderPlaced() {
-        return numberOfOrderPlaced;
-    }
-
-    public void setNumberOfOrderPlaced(Integer numberOfOrderPlaced) {
-        this.numberOfOrderPlaced = numberOfOrderPlaced;
-    }
-
-    public String getOrderStageId() {
-        return orderStageId;
-    }
-
-    public void setOrderStageId(String orderStageId) {
-        this.orderStageId = orderStageId;
-    }
+    
 
 }

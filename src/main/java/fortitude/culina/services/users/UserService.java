@@ -1,15 +1,18 @@
 package fortitude.culina.services.users;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
+import com.vaadin.hilla.BrowserCallable;
 
 import fortitude.culina.entity.users.User;
 import fortitude.culina.repository.UserRepository;
 
-@Service
+@BrowserCallable
+@AnonymousAllowed
 public class UserService {
 
     private final UserRepository repository;
@@ -40,6 +43,10 @@ public class UserService {
 
     public int count() {
         return (int) repository.count();
+    }
+
+    public List<User> getAllUsers() {
+        return repository.findAll();
     }
 
 }
