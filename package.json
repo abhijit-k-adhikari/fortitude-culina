@@ -25,6 +25,7 @@
     "construct-style-sheets-polyfill": "3.1.0",
     "date-fns": "2.29.3",
     "lit": "3.2.1",
+    "lodash": "^4.17.21",
     "proj4": "2.15.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -35,6 +36,7 @@
     "@preact/signals-react-transform": "0.5.1",
     "@rollup/plugin-replace": "6.0.2",
     "@rollup/pluginutils": "5.1.4",
+    "@types/lodash": "^4.17.16",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.6",
     "@vaadin/hilla-generator-cli": "24.7.2",
@@ -124,7 +126,7 @@
       "workbox-core": "7.3.0",
       "workbox-precaching": "7.3.0"
     },
-    "hash": "5a7ca2dcb16f3c43fdfe13b23890623700799abfeb30785e442c31d939479226"
+    "hash": "0edd35d51446b95f4f580261df1f29644819021c2700c410cd17d0408473be5d"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",
@@ -163,6 +165,7 @@
     "@vaadin/vaadin-themable-mixin": "$@vaadin/vaadin-themable-mixin",
     "@vaadin/vaadin-lumo-styles": "$@vaadin/vaadin-lumo-styles",
     "@vaadin/vaadin-material-styles": "$@vaadin/vaadin-material-styles",
-    "react-router": "$react-router"
+    "react-router": "$react-router",
+    "lodash": "$lodash"
   }
 }

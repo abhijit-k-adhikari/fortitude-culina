@@ -11,15 +11,49 @@ import {
   Tooltip,
   VerticalLayout,
 } from '@vaadin/react-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { RecipeIngredientListProps, RecipeIngredientProps } from 'Frontend/views/interfaces/sharedInterfaces';
+import AddIndividualIngredient from './addIndividualIngredient';
 
-interface AddRecipeProps {
+interface RecipeProps {
   dialogOpen: boolean;
   onClick: (param: any) => void;
 }
 
-export default function AddRecipe(props: AddRecipeProps) {
+export default function AddRecipe(props: RecipeProps) {
   const [errorMessage, setErrorMessage] = useState('');
+  const [pax, setPax] = useState<any[]>([
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' },
+    { value: '5', label: '5' },
+    { value: '6', label: '6' },
+    { value: '7', label: '7' },
+    { value: '8', label: '8' },
+    { value: '9', label: '9' },
+    { value: '10', label: '10' },
+    { value: '15', label: '15' },
+    { value: '20', label: '20' },
+    { value: '25', label: '25' },
+    { value: '30', label: '30' },
+    { value: '50', label: '50' },
+    { value: '75', label: '75' },
+    { value: '100', label: '100' },
+    { value: '125', label: '125' },
+    { value: '150', label: '150' },
+    { value: '175', label: '175' },
+    { value: '200', label: '200' },
+  ]);
+
+  const [ingredientItems, setIngredientItems] = useState<RecipeIngredientProps[]>([
+    { ingredientName: '', quantity: '0', unit: '', note: '' },
+    { ingredientName: 'tomato', quantity: '10', unit: 'pc', note: 'notes' },
+  ]);
+
+  const [ingredientItemProps, setIndividualIngredientProps] = useState<RecipeIngredientListProps>({
+    items: ingredientItems,
+  });
 
   return (
     <Dialog
@@ -51,18 +85,17 @@ export default function AddRecipe(props: AddRecipeProps) {
       }>
       <VerticalLayout theme="spacing" style={{ alignItems: 'stretch' }}>
         <FormLayout responsiveSteps={[{ columns: 3 }]}>
-          <TextField label="Recipe name" data-colspan="3" />
+          <TextField label="Recipe Name" data-colspan="2" required errorMessage="Recipe name is mandatory" />
+          <ComboBox
+            label="Number of Pax"
+            data-colspan="1"
+            required
+            itemLabelPath="label"
+            itemValuePath="value"
+            items={pax}
+            errorMessage="Field is required"></ComboBox>
           <div data-colspan="2">
-            <FormLayout responsiveSteps={[{ columns: 10 }]}>
-              <ComboBox label="Ingredient name" data-colspan="3" />
-              <TextField label="Quantity" data-colspan="2" />
-              <ComboBox label="Unit" />
-              <TextField label="Note" data-colspan="3" />
-              <Button theme="icon error" aria-label="Close">
-                <Icon icon="vaadin:close-small" />
-                <Tooltip slot="tooltip" text="Delete Ingredient" />
-              </Button>
-            </FormLayout>
+            <AddIndividualIngredient items={ingredientItemProps.items}></AddIndividualIngredient>
             <HorizontalLayout theme="spacing" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>
               <Button theme="secondary">Add Ingredients</Button>
             </HorizontalLayout>
