@@ -114,7 +114,7 @@ export default function AddRecipe(props: RecipeProps) {
             itemLabelPath="label"
             itemValuePath="value"
             items={pax}
-            errorMessage="Field is required"></ComboBox>
+            errorMessage="Field is required" />
           <div data-colspan="3">
             <AddIngredient items={ingredientItemProps.items} onDelete={deleteIngredients}></AddIngredient>
             <HorizontalLayout theme="spacing" style={{ flexWrap: 'wrap', justifyContent: 'flex-end' }}>

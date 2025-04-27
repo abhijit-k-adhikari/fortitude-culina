@@ -27,7 +27,7 @@ export default function StaffOrderListView() {
     LocationService.getAllLocations().then((data) => (locations.value = data));
     UserService.getAllUsers().then((data) => (staffs.value = data));
     OrderStageService.getAllOrders().then((data) => (orderStages.value = data));
-  });
+  }, []);
 
   const statusRenderer = ({ item: recipeOrder }: { item: RecipeOrder }) => (
     <span {...{ theme: `badge ${recipeOrder.orderStage === 'Completed' ? 'success' : 'info'}` }}>
@@ -84,7 +84,7 @@ export default function StaffOrderListView() {
                     itemLabelPath="recipeName"
                     itemValuePath="recipeName"
                     items={recipes.value}
-                    errorMessage="Field is required"></ComboBox>
+                    errorMessage="Field is required" />
                 ),
               },
               location: {
@@ -97,7 +97,7 @@ export default function StaffOrderListView() {
                     itemLabelPath="name"
                     itemValuePath="name"
                     items={locations.value}
-                    errorMessage="Field is required"></ComboBox>
+                    errorMessage="Field is required" />
                 ),
               },
               staff: {
@@ -110,7 +110,7 @@ export default function StaffOrderListView() {
                     itemLabelPath="name"
                     itemValuePath="name"
                     items={staffs.value}
-                    errorMessage="Field is required"></ComboBox>
+                    errorMessage="Field is required" />
                 ),
               },
               orderStage: {
@@ -122,7 +122,7 @@ export default function StaffOrderListView() {
                     itemLabelPath="stage"
                     itemValuePath="stage"
                     items={orderStages.value}
-                    errorMessage="Field is required"></ComboBox>
+                    errorMessage="Field is required" />
                 ),
               },
               numberOfOrderPlaced: {

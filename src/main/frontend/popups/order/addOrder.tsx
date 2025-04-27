@@ -12,9 +12,11 @@ import {
   TextField,
   VerticalLayout,
 } from '@vaadin/react-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RecipeIngredientListProps, RecipeIngredientProps } from 'Frontend/interfaces/sharedInterfaces';
+import { LocationService, RecipeService, UserService } from 'Frontend/generated/endpoints';
 import _ from 'lodash';
+import { useSignal } from '@vaadin/hilla-react-signals';
 
 interface RecipeProps {
   dialogOpen: boolean;
@@ -22,69 +24,41 @@ interface RecipeProps {
 }
 
 export default function AddOrder(props: RecipeProps) {
-  const [errorMessage, setErrorMessage] = useState('');
-  const [pax, setPax] = useState<any[]>([
-    { value: '1', label: '1' },
-    { value: '2', label: '2' },
-    { value: '3', label: '3' },
-    { value: '4', label: '4' },
-    { value: '5', label: '5' },
-    { value: '6', label: '6' },
-    { value: '7', label: '7' },
-    { value: '8', label: '8' },
-    { value: '9', label: '9' },
-    { value: '10', label: '10' },
-    { value: '15', label: '15' },
-    { value: '20', label: '20' },
-    { value: '25', label: '25' },
-    { value: '30', label: '30' },
-    { value: '50', label: '50' },
-    { value: '75', label: '75' },
-    { value: '100', label: '100' },
-    { value: '125', label: '125' },
-    { value: '150', label: '150' },
-    { value: '175', label: '175' },
-    { value: '200', label: '200' },
+  const recipes = useSignal<any>([]);
+  const locations = useSignal<any>([]);
+  const staffs = useSignal<any>([]);
+  const [pax, setPax] = useState<any[]>([]);
+
+  const [repeat, setRepeat] = useState<any[]>([
+    { value: 'Never', label: 'Never' },
+    { value: 'Daily', label: 'Daily' },
+    { value: 'Weekly', label: 'Weekly' },
+    { value: 'Monthly', label: 'Monthly' },
+    { value: 'Yearly', label: 'Yearly' },
   ]);
 
-  const [ingredientItems, setIngredientItems] = useState<RecipeIngredientProps[]>([
-    { uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' },
-  ]);
+  useEffect(() => {
+    RecipeService.getAllRecipe().then((data) => (recipes.value = data));
+    LocationService.getAllLocations().then((data) => (locations.value = data));
+    UserService.getAllUsers().then((data) => (staffs.value = data));
 
-  const [ingredientItemProps, setIndividualIngredientProps] = useState<RecipeIngredientListProps>({
-    items: ingredientItems,
-    onDelete: (param: any) => {},
-  });
+    //initialize the pax count
+    initializePax();
+  }, []);
 
-  function addIngredients(): void {
-    let items: RecipeIngredientProps[] = ingredientItems;
-    let uuid = _.uniqueId();
-    console.log('addIngredients: ' + uuid);
-    items.push({ uniqueId: uuid, ingredientName: '', quantity: '0', unit: '', note: '' });
-
-    setIngredientItems(items);
-    setIndividualIngredientProps({ items: items, onDelete: (param: any) => {} });
-  }
-
-  function deleteIngredients(uuId: any): void {
-    _.remove(ingredientItems, function (o: RecipeIngredientProps) {
-      return o.uniqueId == uuId;
-    });
-
-    setIngredientItems(ingredientItems);
-    setIndividualIngredientProps({ items: ingredientItems, onDelete: (param: any) => {} });
+  function initializePax(): void {
+    let pax: any[] = [];
+    for (let i: number = 1; i <= 100; i++) {
+      pax.push({ value: i, label: i });
+    }
+    setPax(pax);
   }
 
   function addOrder(param: any): void {
-    console.log(param);
-    // reset the panel for next time render
-    setIngredientItems([{ uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' }]);
     props.onClose(param);
   }
 
   function cancelRecipe(param: any): void {
-    // reset the panel for next time render
-    setIngredientItems([{ uniqueId: _.uniqueId(), ingredientName: '', quantity: '0', unit: '', note: '' }]);
     props.onClose(param);
   }
 
@@ -108,14 +82,57 @@ export default function AddOrder(props: RecipeProps) {
       }>
       <VerticalLayout theme="spacing" style={{ alignItems: 'stretch' }}>
         <FormLayout responsiveSteps={[{ columns: 4 }]}>
-          <ComboBox label="Recipe" data-colspan="3" errorMessage="Field is required"></ComboBox>
-          <TextField label="No Of Pax" data-colspan="1" required errorMessage="Recipe name is mandatory" />
-          <ComboBox label="Location" data-colspan="2" errorMessage="Field is required"></ComboBox>
-          <ComboBox label="Staff" data-colspan="2" errorMessage="Field is required"></ComboBox>
+          <ComboBox
+            data-colspan="3"
+            required
+            label="Recipe"
+            itemLabelPath="recipeName"
+            itemValuePath="recipeName"
+            items={recipes.value}
+            errorMessage="Field is required"
+          />
+
+          <ComboBox
+            data-colspan="1"
+            label="Order Quantity"
+            required
+            itemLabelPath="label"
+            itemValuePath="value"
+            items={pax}
+            errorMessage="Field is required"
+          />
+
+          <ComboBox
+            data-colspan="2"
+            required
+            label="Location"
+            itemLabelPath="name"
+            itemValuePath="name"
+            items={locations.value}
+            errorMessage="Field is required"
+          />
+
+          <ComboBox
+            data-colspan="2"
+            required
+            label="Staff"
+            itemLabelPath="name"
+            itemValuePath="name"
+            items={staffs.value}
+            errorMessage="Field is required"
+          />
 
           <DateTimePicker label="Start Time" data-colspan="2"></DateTimePicker>
           <DateTimePicker label="End Time" data-colspan="2"></DateTimePicker>
-          <ComboBox label="Repeat" data-colspan="2" errorMessage="Field is required"></ComboBox>
+          <ComboBox
+            data-colspan="2"
+            label="Repeat"
+            required
+            itemLabelPath="label"
+            itemValuePath="value"
+            items={repeat}
+            errorMessage="Field is required"
+          />
           <DatePicker label="Until" data-colspan="2"></DatePicker>
 
           <TextField label="Customer Name" data-colspan="1" errorMessage="Recipe name is mandatory" />
