@@ -1,16 +1,13 @@
 // Contains code for List of Inventory information's
 
 import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
-import { AutoCrud } from '@vaadin/hilla-react-crud';
 import { useEffect, useState } from 'react';
 import { useSignal } from '@vaadin/hilla-react-signals';
 import { RecipeOrderService } from 'Frontend/generated/endpoints';
-import RecipeOrderModel from 'Frontend/generated/fortitude/culina/entity/order/RecipeOrderModel';
-import { LocationService, RecipeService, OrderStageService, UserService } from 'Frontend/generated/endpoints';
 import RecipeOrder from 'Frontend/generated/fortitude/culina/entity/order/RecipeOrder';
-import { Button, ComboBox, Grid, GridColumn, Icon } from '@vaadin/react-components';
-import AddRecipe from 'Frontend/popups/recipe/addRecipe';
+import { Button, Grid, GridColumn, Icon } from '@vaadin/react-components';
 import Recipe from 'Frontend/generated/fortitude/culina/entity/recipe/Recipe';
+import AddOrder from 'Frontend/popups/order/addOrder';
 
 export const config: ViewConfig = {
   menu: { order: 4, icon: 'line-awesome/svg/luggage-cart-solid.svg' },
@@ -28,7 +25,7 @@ export default function StaffOrderListView() {
 
   useEffect(() => {
     RecipeOrderService.getAllOrders().then((data) => (orders.value = data));    
-  });
+  }, []);
 
   const statusRenderer = ({ item: recipeOrder }: { item: RecipeOrder }) => (
     <span {...{ theme: `badge ${recipeOrder.orderStage === 'Completed' ? 'success' : 'info'}` }}>
@@ -71,12 +68,20 @@ export default function StaffOrderListView() {
           theme="row-stripes"
           items={orders.value}
           detailsOpenedItems={detailsOpenedItems.value}>        
-          <GridColumn path="recipe" header="Recipe Name" />
-          <GridColumn path="staff" />   
-          <GridColumn frozenToEnd autoWidth flexGrow={0} renderer={editRenderer} />
-          <GridColumn frozenToEnd autoWidth flexGrow={0} renderer={deleteRenderer} />      
+          <GridColumn autoWidth resizable path="recipe" header="Recipe" />
+          <GridColumn autoWidth resizable path="location" header="Location"/>   
+          <GridColumn autoWidth resizable path="orderStage" header="Order Stage"/>   
+          <GridColumn autoWidth resizable path="numberOfOrderPlaced" header="Number Of Order Placed"/>   
+          <GridColumn autoWidth resizable path="orderDateFrom" header="Order Date From"/>   
+          <GridColumn autoWidth resizable path="orderDateTo" header="Order Date To"/>  
+          <GridColumn autoWidth resizable path="customerName" header="Customer Name"/>   
+          <GridColumn autoWidth resizable path="customerPhoneNumber" header="Customer Phone Number"/>   
+          <GridColumn autoWidth resizable path="customerEmailId" header="Customer Email Id"/>   
+          <GridColumn autoWidth resizable path="customerAddress" header="customer Address"/>   
+          <GridColumn autoWidth resizable frozenToEnd flexGrow={0} renderer={editRenderer} />
+          <GridColumn autoWidth resizable frozenToEnd flexGrow={0} renderer={deleteRenderer} />      
         </Grid>
-        <AddRecipe dialogOpen={openDialog} onClose={onCloseDialog}></AddRecipe>
+        <AddOrder dialogOpen={openDialog} onClose={onCloseDialog}></AddOrder>
       </div>
     </>
   );

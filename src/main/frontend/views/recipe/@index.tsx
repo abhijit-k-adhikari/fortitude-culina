@@ -95,11 +95,11 @@ export default function RecipeListView() {
           items={items.value}
           detailsOpenedItems={detailsOpenedItems.value}
           rowDetailsRenderer={detailsRenderer}>
-          <GridColumn width="80px" flexGrow={0} frozen renderer={toggleDetailsRenderer} />
-          <GridColumn path="recipeName" header="Recipe Name" />
-          <GridColumn path="dateAdded" />
-          <GridColumn frozenToEnd autoWidth flexGrow={0} renderer={editRenderer} />
-          <GridColumn frozenToEnd autoWidth flexGrow={0} renderer={deleteRenderer} />
+          <GridColumn autoWidth width="80px" flexGrow={0} frozen renderer={toggleDetailsRenderer} />
+          <GridColumn autoWidth path="recipeName" header="Recipe Name" />
+          <GridColumn autoWidth path="dateAdded" />
+          <GridColumn autoWidth frozenToEnd flexGrow={0} renderer={editRenderer} />
+          <GridColumn autoWidth frozenToEnd flexGrow={0} renderer={deleteRenderer} />
         </Grid>
         <AddRecipe dialogOpen={openDialog} onClose={onCloseDialog}></AddRecipe>
       </div>

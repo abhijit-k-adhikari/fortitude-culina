@@ -1,5 +1,7 @@
 package fortitude.culina.entity.order;
 
+import java.sql.Date;
+
 import fortitude.culina.entity.AbstractEntity;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
@@ -31,7 +33,7 @@ public class RecipeOrder extends AbstractEntity {
     @NotNull
     @NotBlank
     private String staff;
-    
+
     @NotNull
     @NotBlank
     private String orderStageId;
@@ -39,7 +41,11 @@ public class RecipeOrder extends AbstractEntity {
     @NotNull
     @NotBlank
     private String orderStage;
- 
+
+    private Date orderDateFrom;
+
+    private Date orderDateTo;
+
     @NotNull
     private Integer numberOfOrderPlaced;
 
@@ -155,6 +161,19 @@ public class RecipeOrder extends AbstractEntity {
         this.customerAddress = customerAddress;
     }
 
-    
+    public Date getOrderDateFrom() {
+        return orderDateFrom;
+    }
 
+    public void setOrderDateFrom(Date orderDateFrom) {
+        this.orderDateFrom = orderDateFrom;
+    }
+
+    public Date getOrderDateTo() {
+        return orderDateTo;
+    }
+
+    public void setOrderDateTo(Date orderDateTo) {
+        this.orderDateTo = orderDateTo;
+    }
 }

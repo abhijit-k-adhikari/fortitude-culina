@@ -8,7 +8,7 @@ import { RecipeOrderCrudService } from 'Frontend/generated/endpoints';
 import RecipeOrderModel from 'Frontend/generated/fortitude/culina/entity/order/RecipeOrderModel';
 import { LocationService, RecipeService, OrderStageService, UserService } from 'Frontend/generated/endpoints';
 import RecipeOrder from 'Frontend/generated/fortitude/culina/entity/order/RecipeOrder';
-import { ComboBox, TextField } from '@vaadin/react-components';
+import { ComboBox, DateTimePicker, TextField } from '@vaadin/react-components';
 
 export const config: ViewConfig = {
   menu: { order: 9, icon: 'line-awesome/svg/luggage-cart-solid.svg' },
@@ -45,7 +45,15 @@ export default function StaffOrderListView() {
           model={RecipeOrderModel}
           gridProps={{
             columnReorderingAllowed: true,
-            visibleColumns: ['recipe', 'location', 'staff', 'orderStage', 'numberOfOrderPlaced'],
+            visibleColumns: [
+              'recipe',
+              'location',
+              'staff',
+              'orderDateFrom',
+              'orderDateTo',
+              'orderStage',
+              'numberOfOrderPlaced',
+            ],
             columnOptions: {
               recipe: { header: 'Recipe', resizable: true },
               location: { header: 'Location', resizable: true },
@@ -56,7 +64,15 @@ export default function StaffOrderListView() {
           }}
           formProps={{
             deleteButtonVisible: false,
-            visibleFields: ['recipe', 'location', 'staff', 'orderStage', 'numberOfOrderPlaced'],
+            visibleFields: [
+              'recipe',
+              'location',
+              'staff',
+              'orderDateFrom',
+              'orderDateTo',
+              'orderStage',
+              'numberOfOrderPlaced',
+            ],
             fieldOptions: {
               recipe: {
                 renderer: ({ field }) => (
@@ -111,6 +127,12 @@ export default function StaffOrderListView() {
               },
               numberOfOrderPlaced: {
                 renderer: ({ field }) => <TextField readonly {...field} label="Number Of Order Placed" />,
+              },
+              orderDateFrom: {
+                renderer: ({ field }) => <DateTimePicker readonly {...field} label="Order Date From" />,
+              },
+              orderDateTo: {
+                renderer: ({ field }) => <DateTimePicker readonly {...field} label="Order Date To" />,
               },
             },
           }}
