@@ -9,6 +9,7 @@ import RecipeOrderModel from 'Frontend/generated/fortitude/culina/entity/order/R
 import { LocationService, RecipeService, OrderStageService, UserService } from 'Frontend/generated/endpoints';
 import RecipeOrder from 'Frontend/generated/fortitude/culina/entity/order/RecipeOrder';
 import { ComboBox, DateTimePicker, TextField } from '@vaadin/react-components';
+import '../../themes/restaurant-management/view-styles/user.css';
 
 export const config: ViewConfig = {
   menu: { order: 9, icon: 'line-awesome/svg/luggage-cart-solid.svg' },
@@ -38,7 +39,7 @@ export default function StaffOrderListView() {
 
   return (
     <>
-      <div className="p-l">
+      <div className="p-l app-header">
         <AutoCrud
           noNewButton={true}
           style={{ height: '600px' }}

@@ -4,16 +4,12 @@ import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
 import { AutoCrud } from '@vaadin/hilla-react-crud';
 import { useEffect } from 'react';
 import { useSignal } from '@vaadin/hilla-react-signals';
-import { ComboBox, TextArea } from '@vaadin/react-components';
+import { ComboBox } from '@vaadin/react-components';
 import { InventoryCrudService } from 'Frontend/generated/endpoints';
 import InventoryModel from 'Frontend/generated/fortitude/culina/entity/inventory/InventoryModel';
 import { CategoryService } from 'Frontend/generated/endpoints';
-import Category from 'Frontend/generated/fortitude/culina/entity/shared/Category';
 import { UnitService } from 'Frontend/generated/endpoints';
-import Unit from 'Frontend/generated/fortitude/culina/entity/shared/Unit';
 import { LocationService } from 'Frontend/generated/endpoints';
-import Location from 'Frontend/generated/fortitude/culina/entity/shared/Location';
-import { field } from '@vaadin/hilla-lit-form';
 
 export const config: ViewConfig = {
   menu: { order: 1, icon: 'line-awesome/svg/atom-solid.svg' },
