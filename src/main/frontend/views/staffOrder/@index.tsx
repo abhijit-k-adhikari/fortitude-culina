@@ -12,8 +12,9 @@ import { ComboBox, DateTimePicker, TextField } from '@vaadin/react-components';
 
 export const config: ViewConfig = {
   menu: { order: 9, icon: 'line-awesome/svg/luggage-cart-solid.svg' },
-  title: 'Staff Order',
+  title: 'Order',
   loginRequired: true,
+  rolesAllowed: ['USER'],
 };
 
 export default function StaffOrderListView() {

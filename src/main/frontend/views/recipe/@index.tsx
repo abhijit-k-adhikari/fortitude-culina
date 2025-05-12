@@ -12,6 +12,7 @@ export const config: ViewConfig = {
   menu: { order: 2, icon: 'line-awesome/svg/cocktail-solid.svg' },
   title: 'Recipe',
   loginRequired: true,
+  rolesAllowed: ['ADMIN'],
 };
 
 export default function RecipeListView() {

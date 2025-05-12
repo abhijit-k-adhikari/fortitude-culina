@@ -9,6 +9,7 @@ export const config: ViewConfig = {
   menu: { order: 6, icon: 'line-awesome/svg/user-solid.svg' },
   title: 'User',
   loginRequired: true,
+  rolesAllowed: ['ADMIN'],
 };
 
 export default function UserView() {

@@ -7,6 +7,7 @@ export const config: ViewConfig = {
   menu: { order: 9, icon: 'line-awesome/svg/cog-solid.svg' },
   title: 'Settings',
   loginRequired: true,
+  rolesAllowed: ['ADMIN_NOT_IMPLEMENTED'],
 };
 
 export default function SettingsView() {

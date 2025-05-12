@@ -4,6 +4,7 @@ export const config: ViewConfig = {
   menu: { order: 8, icon: 'line-awesome/svg/file-contract-solid.svg' },
   title: 'Report',
   loginRequired: true,
+  rolesAllowed: ['ADMIN_NOT_IMPLEMENTED'],
 };
 
 export default function ReportView() {

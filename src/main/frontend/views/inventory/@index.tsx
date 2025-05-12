@@ -19,6 +19,7 @@ export const config: ViewConfig = {
   menu: { order: 1, icon: 'line-awesome/svg/atom-solid.svg' },
   title: 'Inventory',
   loginRequired: true,
+  rolesAllowed: ['ADMIN'],
 };
 
 export default function InventoryListView() {

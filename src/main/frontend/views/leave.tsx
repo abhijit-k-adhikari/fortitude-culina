@@ -4,6 +4,7 @@ export const config: ViewConfig = {
   menu: { order: 6, icon: 'line-awesome/svg/calendar.svg' },
   title: 'Leave',
   loginRequired: true,
+  rolesAllowed: ['ADMIN_NOT_IMPLEMENTED'],
 };
 
 export default function LeaveView() {

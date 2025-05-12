@@ -13,6 +13,7 @@ export const config: ViewConfig = {
   menu: { order: 4, icon: 'line-awesome/svg/luggage-cart-solid.svg' },
   title: 'Order',
   loginRequired: true,
+  rolesAllowed: ['ADMIN'],
 };
 
 export default function StaffOrderListView() {

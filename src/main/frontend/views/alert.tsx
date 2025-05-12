@@ -4,6 +4,7 @@ export const config: ViewConfig = {
   menu: { order: 5, icon: 'line-awesome/svg/bell.svg' },
   title: 'Alert',
   loginRequired: true,
+  rolesAllowed: ['ADMIN_NOT_IMPLEMENTED'],
 };
 
 export default function AlertView() {
